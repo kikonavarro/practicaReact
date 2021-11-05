@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import React, { useState } from "react";
 import AdvertsPage from "./components/AdvertsPage/AdvertsPage";
 import NewAdvertPage from "./components/NewAdvertPage/NewAdvertPage";
@@ -21,14 +21,14 @@ function App({ isInitiallyLogged }) {
 	return (
     <Router>
       <AuthContextProvider value ={{isLogged, handleLogout, handleLogin}}>
-        <div className="App">
+        <div>
           <Route path="/login" component={LoginPage}/>
           <Route path="/" component={AdvertsPage}/>
 
-          <AdvertsPage />
+          {/* <AdvertsPage />
           <NewAdvertPage />
           <AdvertPage />
-          {isLogged ? (<AdvertsPage isLogged={isLogged} onLogout={handleLogout} />): (<LoginPage onLogin={handleLogin} />)}
+          {isLogged ? (<AdvertsPage isLogged={isLogged} onLogout={handleLogout} />): (<LoginPage onLogin={handleLogin} />)} */}
         </div>
       </AuthContextProvider>
     </Router>

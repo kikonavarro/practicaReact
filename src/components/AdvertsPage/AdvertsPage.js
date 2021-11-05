@@ -1,21 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import { getLatestAdverts } from "../service";
+import Advert from "./Advert";
 
-const AdvertsPage = () => {
+
+const AdvertsPage = ({history, ...props }) => {
 	const [adverts, setAdverts] = useState([]);
 
 	useEffect(() => {
-		getLatestAdverts().then(setAdverts);
+		getLatestAdverts().then(adverts => setAdverts(adverts));
 	}, []);
 
 	return (
 		<Layout title="probando">
-			<div className="">
+			<div>
 				<ul>
-					{adverts.map((advert) => (
-						<li>{advert}</li>
+					{adverts.map(({id, ...advert}) => (
+						<li key={id}>
+						<Link to={`/adverts/${id}`}>
+						  <Advert {...advert} />
+						</Link>
+					  </li>
 					))}
 				</ul>
 			</div>

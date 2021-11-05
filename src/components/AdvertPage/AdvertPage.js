@@ -21,7 +21,7 @@ class AdvertPage extends React.Component {
     }
     componentDidMount() {
         const {match} = this.props
-        this.handleGetAdvert(match.params.tweetId)
+        this.handleGetAdvert(match.params.advertId)
     }
     
  

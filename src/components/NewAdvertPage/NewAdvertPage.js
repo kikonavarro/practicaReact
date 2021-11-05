@@ -3,13 +3,13 @@ import Layout from '../layout/Layout';
 
 import { useEffect, useState, useRef } from 'react';
 import { Redirect, useHistory } from 'react-router';
-import { Button, Photo, Textarea } from '../../common';
+//import { Button, Photo} from '../../common';
 // import Layout from '../../layout';
 import { createAdvert } from '../service';
 
-import './NewTweetPage.css';
+//import './NewTweetPage.css';
 
-const MAX_CHARACTERS = 280;
+//const MAX_CHARACTERS = 280;
 
 function NewAdvertPage() {
   const history = useHistory();
@@ -51,27 +51,18 @@ function NewAdvertPage() {
     <Layout title="Nuevo Anuncio">
       <div >
         <div >
-          <Photo />
+          
         </div>
         <div>
           <form onSubmit={handleSubmit}>
-            <Textarea
+            
               
-              placeholder="Hey! What's up!"
-              value={content}
-              onChange={handleChange}
-              maxLength={MAX_CHARACTERS}
-              ref={textareaRef}
-            ></Textarea>
+          
             <div>
-              <Button
-                type="submit"
-                className="newTweetPage-submit"
-                variant="primary"
-                disabled={!(content.length > 5)}
-              >
+              <button type="submit">
+                           
                 Let's go!
-              </Button>
+            </button>
             </div>
           </form>
         </div>

@@ -11,6 +11,7 @@ const LoginPage = ({ onLogin, history, location }) => {
 	const [value, setValue] = useState({ email: "", password: "" });
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [checked, setChecked] = useState(false)
 
 	const resetError = () => setError(null);
 
@@ -29,15 +30,18 @@ const LoginPage = ({ onLogin, history, location }) => {
 		try {
 			await login(value);
 			setIsLoading(false);
-
-			// call to api send value
-			//username y password habrá que meterlo en un objeto antes? credentials?
 			onLogin();
+			const { from } = location.state || { from: { pathname: '/' } };
+      		history.replace(from);	
 		} catch (error) {
 			console.log(error);
 			setIsLoading(false);
 		}
 	};
+
+	const handelChecked = () => {
+		
+	}
 
 	return (
 		<div>
@@ -45,8 +49,8 @@ const LoginPage = ({ onLogin, history, location }) => {
 			<form onSubmit={handelSubmit}>
 				<FormField
 					type="text"
-					name="username"
-					label="phone, email or username"
+					name="email"
+					label="email"
 					value={value.email}
 					onChange={handleChange}
 				/>
@@ -57,15 +61,18 @@ const LoginPage = ({ onLogin, history, location }) => {
 					value={value.password}
 					onChange={handleChange}
 				/>
+				<label><input type="checkbox"  value="first_checkbox"/> Recordar Contraseña</label><br/>
 				<button
 					type="submit"
 					disabled={isLoading || !value.email || !value.password}
 				>
-					{" "}
-					Login{" "}
+					
+					Login
 				</button>
+
+
 			</form>
-			{error && <div>{error.message}</div>}
+			{error && <div>{error.message}</div>} 
 		</div>
 	);
 };
@@ -79,4 +86,4 @@ const ConnectedLoginPage = props => (
 
 export default ConnectedLoginPage
 
-export {LoginPage};
+
