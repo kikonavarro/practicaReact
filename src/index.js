@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import client from './api/client'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { setAuthorizationHeader } from "./api/client";
+import storage from "./utils/storage";
+
+const accessToken = storage.get("auth");
+setAuthorizationHeader(accessToken);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<App isInitiallyLogged={!!accessToken} />
+	</React.StrictMode>,
+	document.getElementById("root")
 );
-
