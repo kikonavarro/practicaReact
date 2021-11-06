@@ -7,8 +7,10 @@ const storage = {
 		return JSON.parse(value);
 	},
 
-	set(key, value) {
-		localStorage.setItem(key, JSON.stringify(value));
+	set(key, value, saveValue) {
+		if (saveValue===true) {
+			localStorage.setItem(key, JSON.stringify(value));
+		}
 	},
 
 	remove(key) {

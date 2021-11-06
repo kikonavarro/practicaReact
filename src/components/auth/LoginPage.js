@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormField from "../common/FormField";
-import { AuthContextConsumer } from "./contex";
+import { AuthContextConsumer } from "./context";
 
 import { login } from "./service";
 
@@ -11,16 +11,30 @@ const LoginPage = ({ onLogin, history, location }) => {
 	const [value, setValue] = useState({ email: "", password: "" });
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [checked, setChecked] = useState(false)
+	const [checkedValue, setCheckedValue] = useState(false);
+
+	function toggle(checkedValue) {
+		return !checkedValue;
+	}
+
+	const handleCheckedValue = (event) => {
+		if (event.target.value) {
+			localStorage.setItem(
+				"auth",
+				JSON.stringify(localStorage.getItem("auth"))
+			);
+		}
+		setCheckedValue(toggle(checkedValue));
+	};
 
 	const resetError = () => setError(null);
 
-	const handleChange = event => {
-		setValue(prevState => ({
-		  ...prevState,
-		  [event.target.name]: event.target.value,
+	const handleChange = (event) => {
+		setValue((prevState) => ({
+			...prevState,
+			[event.target.name]: event.target.value,
 		}));
-	  };
+	};
 
 	const handelSubmit = async (event) => {
 		event.preventDefault();
@@ -28,20 +42,16 @@ const LoginPage = ({ onLogin, history, location }) => {
 		resetError();
 
 		try {
-			await login(value);
+			await login(value, checkedValue);
 			setIsLoading(false);
 			onLogin();
-			const { from } = location.state || { from: { pathname: '/' } };
-      		history.replace(from);	
+			const { from } = location.state || { from: { pathname: "/" } };
+			history.replace(from);
 		} catch (error) {
 			console.log(error);
 			setIsLoading(false);
 		}
 	};
-
-	const handelChecked = () => {
-		
-	}
 
 	return (
 		<div>
@@ -61,29 +71,33 @@ const LoginPage = ({ onLogin, history, location }) => {
 					value={value.password}
 					onChange={handleChange}
 				/>
-				<label><input type="checkbox"  value="first_checkbox"/> Recordar Contraseña</label><br/>
+				<label>
+					<input
+						type="checkbox"
+						name="checkbox"
+						id={0}
+						onChange={handleCheckedValue}
+						checked={checkedValue}
+					/>
+					recordar contraseña
+				</label>
+				<br />
 				<button
 					type="submit"
 					disabled={isLoading || !value.email || !value.password}
 				>
-					
 					Login
 				</button>
-
-
 			</form>
-			{error && <div>{error.message}</div>} 
+			{error && <div>{error.message}</div>}
 		</div>
 	);
 };
 
-const ConnectedLoginPage = props => (
-    <AuthContextConsumer>
-        {auth => <LoginPage onLogin={auth.handleLogin} {...props}/>}
-    </AuthContextConsumer>
-        
-)
+const ConnectedLoginPage = (props) => (
+	<AuthContextConsumer>
+		{(auth) => <LoginPage onLogin={auth.handleLogin} {...props} />}
+	</AuthContextConsumer>
+);
 
-export default ConnectedLoginPage
-
-
+export default ConnectedLoginPage;
