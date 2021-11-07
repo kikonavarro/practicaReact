@@ -7,6 +7,7 @@ import LoginPage from "./components/auth/LoginPage";
 import { logout } from "./components/auth/service";
 import { AuthContextProvider } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
+import Advert from "./components/AdvertsPage/Advert";
 
 function App({ isInitiallyLogged }) {
 	const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -25,7 +26,9 @@ function App({ isInitiallyLogged }) {
 				<div>
 					<Switch>
 						<PrivateRoute path="/advert/new" component={NewAdvertPage} />
-						<PrivateRoute path="/adverts/:advertId" component={AdvertPage} />
+						<PrivateRoute path="/adverts/:id">
+						{(routerProps) => <AdvertPage {...routerProps} />}
+						</PrivateRoute>
 						<Route exact path="/login" component={LoginPage} />
 						<PrivateRoute path="/adverts" component={AdvertsPage} />
 						<Route exact path="/">
