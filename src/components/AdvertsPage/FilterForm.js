@@ -47,61 +47,68 @@ const FilterForm = ({ onSubmit }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<FormField
-				name="advertName"
-				type="text"
-				label="name"
-				value={filterAdvert.name}
-				onChange={handleChange}
-				autofocus={true}
-			/>
-			<FormField
-				name="minPrice"
-				type="number"
-				label="min-price"
-				min="0"
-				value={filterAdvert.minPrice}
-				onChange={handleChange}
-				autofocus={false}
-			/>
+		
+			<form className="mb-4" onSubmit={handleSubmit}>
+				<FormField
+					
+					name="name"
+					type="text"
+					label="name"
+					value={filterAdvert.name}
+					onChange={handleChange}
+					autofocus={true}
+				/>
+				<FormField
+					name="minPrice"
+					type="number"
+					label="min-price"
+					min="0"
+					value={filterAdvert.minPrice}
+					onChange={handleChange}
+					autofocus={false}
+				/>
 
-			<FormField
-				name="maxPrice"
-				label="max-price"
-				type="number"
-				min="0"
-				value={filterAdvert.maxPrice}
-				onChange={handleChange}
-				autofocus={false}
-			/>
-			<TagsAvailable
-				onChange={handleChangeTags}
-				name="tags"
-				tags={tagsAvailable}
-				checked={tags}
-			/>
-
-			<input
-				type="checkbox"
-				name="sale"
-				label="Sale"
-				checked={filterAdvert.sale}
-				onChange={handleChange}
-			/>
-
-			<input
-				type="checkbox"
-				name="buy"
-				label="Buy"
-				checked={filterAdvert.buy}
-				onChange={handleChange}
-			/>
-
-			<button className="btn btn-primary" type="submit">
-				Search
-			</button>
-		</form>
+				<FormField
+					name="maxPrice"
+					label="max-price"
+					type="number"
+					min="0"
+					value={filterAdvert.maxPrice}
+					onChange={handleChange}
+					autofocus={false}
+				/>
+			
+				<TagsAvailable
+					className="col-auto"
+					onChange={handleChangeTags}
+					name="tags"
+					tags={tagsAvailable}
+					checked={tags}
+				/>
+				<p></p>
+				<input
+					className="form-check-input col-auto"
+					type="checkbox"
+					name="sale"
+					label="Sale"
+					checked={filterAdvert.sale}
+					onChange={handleChange}
+				/> Venta
+				<br/>
+				<input
+					className="form-check-input col-auto"
+					type="checkbox"
+					name="buy"
+					label="Buy"
+					checked={filterAdvert.buy}
+					onChange={handleChange}
+				/> Compra
+				<br/>
+				<button className="btn btn-primary col-auto" type="submit">
+					Buscar Anuncio
+				</button>
+			</form>
+		
 	);
 };
 

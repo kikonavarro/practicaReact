@@ -13,7 +13,7 @@ const Advert = ({ adverts }) => {
 							<p className="card-text">
 								{advert.sale ? "Venta" : "Compra"}
 							</p>
-							<p className="card-text">{advert.price}</p>
+							<p className="card-text">{advert.price} Euros</p>
 							<p className="card-text">{advert.tags}</p>
 							<p>
 								{advert.photo && (

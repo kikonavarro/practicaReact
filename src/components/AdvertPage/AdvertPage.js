@@ -1,13 +1,11 @@
-import Layout from '../layout/Layout';
-import { getAdvert, deleteAdvert } from '../service';
-import Advert from '../AdvertsPage/Advert';
-import NotFoundPage from '../NotFoundPage'
-import WindowConfirm from './WindowConfirm'
-import AdvertUnico from './AdvertUnico'
+import Layout from "../layout/Layout";
+import { getAdvert, deleteAdvert } from "../service";
+import NotFoundPage from "../NotFoundPage";
+import DeleteConfirm from "./DeleteConfirm";
+import AdvertUnico from "./AdvertUnico";
 
-
-import React from 'react';
-import { useHistory } from 'react-router';
+import React from "react";
+import { useHistory } from "react-router";
 
 const AdvertPage = ({ ...RouterProps }) => {
 	const history = useHistory();
@@ -27,7 +25,7 @@ const AdvertPage = ({ ...RouterProps }) => {
 	};
 
 	const handleDelete = () => {
-		deleteAdvert(advert.id).then(history.push('/adverts'));
+		deleteAdvert(advert.id).then(history.push("/adverts"));
 	};
 
 	const handelCancel = () => {
@@ -40,22 +38,18 @@ const AdvertPage = ({ ...RouterProps }) => {
 		<Layout title="Este es tu anuncio seleccionado" onClick={handleClick}>
 			{advert && (
 				<div className="">
-					<AdvertUnico advert={advert} />
-					<button
-						className="deleteAdvertButton"
-						type="button"
-						onClick={handleClick}
-					>
+					<AdvertUnico className=""advert={advert} />
+					<button className="btn btn-danger btn-lg" type="button" onClick={handleClick}>
 						Delete
 					</button>
 				</div>
 			)}
 			{showDeleteAdvert && (
-				<WindowConfirm
+				<DeleteConfirm
 					className="delete-confirm"
 					onConfirm={handleDelete}
 					onCancel={handelCancel}
-				></WindowConfirm>
+				></DeleteConfirm>
 			)}
 		</Layout>
 	);

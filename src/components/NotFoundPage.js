@@ -3,7 +3,7 @@ import React from 'react';
 
 // imr sfc
 const NotFoundPage = () => {
-    return "hola";
+    return "La PÁGINA NO EXISTE";
 }
  
 export default NotFoundPage;

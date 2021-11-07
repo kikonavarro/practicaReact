@@ -24,7 +24,7 @@ const handleSubmit = (filterAdvert, tags) => {
 };
 
 	return (
-		<Layout title="probando">
+		<Layout title="Busca tu anuncio en NODEPOP">
 			<FilterForm onSubmit={handleSubmit} />
 			<div >
 				{adverts.length ? (

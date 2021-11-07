@@ -5,11 +5,12 @@ const TagsAvailable = ({ tags, onChange, checked }) => {
 	};
 
 	return (
-		<div >
+		<div>
 			{tags.map((tag) => (
-				<div key={tag}>
-					<label> {tag}
+				<div className="form-check" key={tag}>
+					<label className="form-check-label"> {tag}
 						<input
+							className="form-check-input"
 							type="checkbox"
 							name={tag}					
 							onChange={handleChangeTags}
