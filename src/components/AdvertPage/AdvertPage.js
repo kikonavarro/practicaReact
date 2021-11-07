@@ -8,7 +8,7 @@ class AdvertPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tweet: null,
+			advert: null,
 			error: null,
 		};
 	}
