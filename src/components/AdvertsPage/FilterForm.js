@@ -23,7 +23,7 @@ const FilterForm = ({ onSubmit }) => {
 	};
 
 	const [filterAdvert, setFilterAdvert] = React.useState({
-		advertName: "",
+		name: "",
 		sale: false,
 		buy: false,
 		maxPrice: 0,
@@ -53,7 +53,7 @@ const FilterForm = ({ onSubmit }) => {
 				type="text"
 				label="name"
 				className="filter-nameField"
-				value={filterAdvert.advertName}
+				value={filterAdvert.name}
 				onChange={handleChange}
 				autofocus={true}
 			/>

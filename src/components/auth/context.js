@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from 'react';
 
 const AuthContext = React.createContext();
 
 export const AuthContextProvider = AuthContext.Provider;
 export const AuthContextConsumer = AuthContext.Consumer;
 
-export const useAuth = () => {
-	const auth = useContext(AuthContext);
-	return auth;
+export const useAuthContext = () => {
+	const value = React.useContext(AuthContext);
+	return value;
 };
 
 export default AuthContext;

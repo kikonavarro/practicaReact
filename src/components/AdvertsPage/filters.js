@@ -1,18 +1,17 @@
 export const initialFilter = {
-	advertName: '',
+	name: '',
 	sale: false,
 	buy: false,
 	maxPrice: 0,
 	minPrice: 0,
-	//tags: [],
 };
 
 export const filterAdverts = (adverts, filterAdvert, tags) => {
 	return adverts
 		.filter(
 			(advert) =>
-				!filterAdvert.advertName ||
-				filterAdvert.advertName === advert.name.toLowerCase()
+				!filterAdvert.name ||
+				filterAdvert.name === advert.name.toLowerCase()
 		)
 		.filter(
 			(advert) =>

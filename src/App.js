@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import React, { useState } from "react";
 import AdvertsPage from "./components/AdvertsPage/AdvertsPage";
 import NewAdvertPage from "./components/NewAdvertPage/NewAdvertPage";
@@ -24,13 +24,15 @@ function App({ isInitiallyLogged }) {
 				value={{ isLogged, handleLogout, handleLogin }}
 			>
 				<div>
-					<Route exact path="/advert/new" component={NewAdvertPage} />
-					<Route exact path="/login" component={LoginPage} />
-					<Route exact path="/adverts" component={AdvertsPage} />
-					<Route exact path="/">
-						<Redirect to="/adverts" />
-					</Route>
-					<Route path="/adverts/:advertId" component={AdvertPage} />
+					<Switch>
+						<PrivateRoute path="/advert/new" component={NewAdvertPage} />
+						<PrivateRoute path="/adverts/:advertId" component={AdvertPage} />
+						<Route exact path="/login" component={LoginPage} />
+						<PrivateRoute path="/adverts" component={AdvertsPage} />
+						<Route exact path="/">
+							<Redirect to="/adverts" />
+						</Route>
+					</Switch>
 				</div>
 			</AuthContextProvider>
 		</Router>

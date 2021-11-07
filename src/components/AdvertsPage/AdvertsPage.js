@@ -26,16 +26,12 @@ const handleSubmit = (filterAdvert, tags) => {
 	return (
 		<Layout title="probando">
 			<FilterForm onSubmit={handleSubmit} />
-			<div>
-				<ul>
-					{adverts.map(({ id, ...advert }) => (
-						<li key={id}>
-							<Link to={`/adverts/${id}`}>
-								<Advert {...advert} />
-							</Link>
-						</li>
-					))}
-				</ul>
+			<div className="advertsPage">
+				{adverts.length ? (
+					<Advert className="advert-items" adverts={filteredAdverts} />
+				) : (
+					<p>crea el primer anuncio</p>
+				)}
 			</div>
 		</Layout>
 	);
