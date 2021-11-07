@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect,
+} from "react-router-dom";
 import React, { useState } from "react";
 import AdvertsPage from "./components/AdvertsPage/AdvertsPage";
 import NewAdvertPage from "./components/NewAdvertPage/NewAdvertPage";
@@ -7,7 +12,7 @@ import LoginPage from "./components/auth/LoginPage";
 import { logout } from "./components/auth/service";
 import { AuthContextProvider } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
-import Advert from "./components/AdvertsPage/Advert";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App({ isInitiallyLogged }) {
 	const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -25,14 +30,21 @@ function App({ isInitiallyLogged }) {
 			>
 				<div>
 					<Switch>
-						<PrivateRoute path="/advert/new" component={NewAdvertPage} />
+						<PrivateRoute
+							path="/advert/new"
+							component={NewAdvertPage}
+						/>
 						<PrivateRoute path="/adverts/:id">
-						{(routerProps) => <AdvertPage {...routerProps} />}
+							{(routerProps) => <AdvertPage {...routerProps} />}
 						</PrivateRoute>
+						<Route path="/404" component={NotFoundPage} />
 						<Route exact path="/login" component={LoginPage} />
 						<PrivateRoute path="/adverts" component={AdvertsPage} />
 						<Route exact path="/">
 							<Redirect to="/adverts" />
+						</Route>
+						<Route>
+							<Redirect to="/404" />
 						</Route>
 					</Switch>
 				</div>

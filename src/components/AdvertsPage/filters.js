@@ -1,5 +1,5 @@
 export const initialFilter = {
-	name: '',
+	name: "",
 	sale: false,
 	buy: false,
 	maxPrice: 0,
@@ -28,6 +28,7 @@ export const filterAdverts = (adverts, filterAdvert, tags) => {
 					advert.price >= filterAdvert.minPrice)
 		)
 		.filter(
-			(advert) => !tags.length || tags.some((tag) => advert.tags.includes(tag))
+			(advert) =>
+				!tags.length || tags.some((tag) => advert.tags.includes(tag))
 		);
 };

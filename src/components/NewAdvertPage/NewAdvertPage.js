@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../layout/Layout";
-import { useEffect, useState, useRef } from "react";
-import { Redirect, useHistory } from "react-router";
+import { useState } from "react";
+import { useHistory } from "react-router";
 import { createAdvert } from "../service";
 import { getAdvertsTags } from "../service";
 import FormField from "../common/FormField";
@@ -26,9 +26,6 @@ function NewAdvertPage() {
 			[event.target.name]: value,
 		});
 	};
-	// event.target.type === "checkbox"
-	// 	? event.target.checked
-	// 	: event.target.value,
 
 	const [fileInput, setFileInput] = React.useState("");
 
@@ -66,8 +63,6 @@ function NewAdvertPage() {
 			}
 
 			createAdvert(newAdvert).then(history.push("/adverts"));
-
-			//setCreatedAdvertId(newAdvert.id);
 		} catch (error) {
 			console.log(error);
 			if (error.status === 401) {
@@ -76,10 +71,6 @@ function NewAdvertPage() {
 			setError(error());
 		}
 	};
-
-	// if (createdAdvertId) {
-	// 	return <Redirect to={`/adverts/${createdAdvertId}`} />;
-	// }
 
 	return (
 		<Layout title="Nuevo Anuncio">
@@ -133,7 +124,7 @@ function NewAdvertPage() {
 				<button
 					className="btn btn-primary"
 					type="submit"
-					//disabled={!value.name || !value.price }
+					disabled={!add.name || !add.price || tags.length === 0}
 				>
 					Crear nuevo Anuncio
 				</button>

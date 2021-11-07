@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-// imr sfc
 const NotFoundPage = () => {
-    return "La PÁGINA NO EXISTE";
-}
- 
+	return (
+		<div>
+			<p>"La PÁGINA NO EXISTE"</p>
+			<Link to={`/`}>
+				<button className="btn btn-primary">Regresar</button>
+			</Link>
+		</div>
+	);
+};
+
 export default NotFoundPage;
