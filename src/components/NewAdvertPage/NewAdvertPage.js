@@ -83,12 +83,11 @@ function NewAdvertPage() {
 
 	return (
 		<Layout title="Nuevo Anuncio">
-			<form className="newAdvertForm" onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<FormField
 					name="name"
 					type="text"
 					label="name"
-					className="newAdvertForm-nameField"
 					value={add.name}
 					onChange={handleChange}
 					autofocus={true}
@@ -132,6 +131,7 @@ function NewAdvertPage() {
 				/>
 
 				<button
+					className="btn btn-primary"
 					type="submit"
 					//disabled={!value.name || !value.price }
 				>

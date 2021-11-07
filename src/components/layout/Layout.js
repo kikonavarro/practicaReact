@@ -8,7 +8,7 @@ const Layout = ({children, title, ...props}) => {
 				<h2>{title}</h2>
 				<section>{children} </section>
 			</main>
-			<footer></footer>
+			<footer>Francisco Javier Navarro - Todos los derechos reservadsos</footer>
 		</div>
 	);
 };

@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import React, { useState } from "react";
 import AdvertsPage from "./components/AdvertsPage/AdvertsPage";

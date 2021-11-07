@@ -13,10 +13,10 @@ function FormField({ className, label, autofocus, ...props }) {
 
 	return (
 		<div>
-			<label className="formField-label">
+			<label className="form-label">
 				<span>{label}</span>
 				<input
-					className="formField-input"
+					className="form-control"
 					autoComplete="off"
 					onFocus={() => setFocus(true)}
 					onBlur={() => setFocus(false)}

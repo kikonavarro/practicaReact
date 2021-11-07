@@ -47,12 +47,11 @@ const FilterForm = ({ onSubmit }) => {
 	};
 
 	return (
-		<form className="filterForm" onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit}>
 			<FormField
 				name="advertName"
 				type="text"
 				label="name"
-				className="filter-nameField"
 				value={filterAdvert.name}
 				onChange={handleChange}
 				autofocus={true}
@@ -62,7 +61,6 @@ const FilterForm = ({ onSubmit }) => {
 				type="number"
 				label="min-price"
 				min="0"
-				className="minPrice-value"
 				value={filterAdvert.minPrice}
 				onChange={handleChange}
 				autofocus={false}
@@ -73,13 +71,11 @@ const FilterForm = ({ onSubmit }) => {
 				label="max-price"
 				type="number"
 				min="0"
-				className="maxPrice-value"
 				value={filterAdvert.maxPrice}
 				onChange={handleChange}
 				autofocus={false}
 			/>
 			<TagsAvailable
-				className="tagsAvailable"
 				onChange={handleChangeTags}
 				name="tags"
 				tags={tagsAvailable}
@@ -87,24 +83,22 @@ const FilterForm = ({ onSubmit }) => {
 			/>
 
 			<input
-                type="checkbox"
+				type="checkbox"
 				name="sale"
 				label="Sale"
-				className="checkbox-sale"
 				checked={filterAdvert.sale}
 				onChange={handleChange}
 			/>
 
 			<input
-                type="checkbox"
+				type="checkbox"
 				name="buy"
 				label="Buy"
-				className="checkbox-buy"
 				checked={filterAdvert.buy}
 				onChange={handleChange}
 			/>
 
-			<button type="submit">
+			<button className="btn btn-primary" type="submit">
 				Search
 			</button>
 		</form>

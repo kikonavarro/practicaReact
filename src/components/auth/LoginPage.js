@@ -83,6 +83,7 @@ const LoginPage = ({ onLogin, history, location }) => {
 				</label>
 				<br />
 				<button
+					className="btn btn-primary"
 					type="submit"
 					disabled={isLoading || !value.email || !value.password}
 				>

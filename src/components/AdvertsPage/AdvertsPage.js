@@ -26,9 +26,9 @@ const handleSubmit = (filterAdvert, tags) => {
 	return (
 		<Layout title="probando">
 			<FilterForm onSubmit={handleSubmit} />
-			<div className="advertsPage">
+			<div >
 				{adverts.length ? (
-					<Advert className="advert-items" adverts={filteredAdverts} />
+					<Advert  adverts={filteredAdverts} />
 				) : (
 					<p>crea el primer anuncio</p>
 				)}

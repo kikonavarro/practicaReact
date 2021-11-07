@@ -5,7 +5,7 @@ const TagsAvailable = ({ tags, onChange, checked }) => {
 	};
 
 	return (
-		<div className="tags-list">
+		<div >
 			{tags.map((tag) => (
 				<div key={tag}>
 					<label> {tag}
